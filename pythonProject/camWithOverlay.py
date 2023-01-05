@@ -7,11 +7,6 @@ from keras.preprocessing import image
 # face detection
 face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
 
-
-
-
-
-
 # place of image
 appSize = (1280, 720)
 imgSize = (100, 100)
@@ -38,7 +33,6 @@ if not cap.isOpened():
 
 count = 0
 overlay = happy
-
 
 def toggleImg(treshold):
     global count, overlay

@@ -6,6 +6,7 @@ import numpy as np
 from moduls.facedetection import getFaceImgInFirstBorder
 
 myModel = load_model('models/bigfoot-ubuntu.h5')
+# myModel = load_model('models/mobilenet_7.h5')
 img_height = 224
 img_width = 224
 
@@ -13,6 +14,7 @@ img_width = 224
 def classify_face_in_first_border(face_borders, img):
     face_img = getFaceImgInFirstBorder(face_borders, img)
     return classify_image(face_img)
+
 
 def classify_image(img):
     if img is None:

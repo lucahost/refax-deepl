@@ -24,7 +24,7 @@ class AppConfig:
 
 class GameConfig:
     def __init__(self, app_size):
-        self.duration_one_challenge = 2
+        self.duration_one_challenge = 6
         self.game_control_config = GameControlConfig(app_size)
 
 

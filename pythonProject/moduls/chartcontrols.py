@@ -6,7 +6,7 @@ from .config import app_config as config
 lastImg = None
 
 
-def radarChartImage(values):
+def radar_chart_image(values):
     global lastImg
     if values is None:
         return lastImg
@@ -29,7 +29,7 @@ def radarChartImage(values):
     return lastImg, config.radar_control_upper_left
 
 
-def barImage(values):
+def bar_image(values):
     global lastImg
     if values is None:
         return lastImg

@@ -1,10 +1,10 @@
+from moduls.chartcontrols import radar_chart_image
 from moduls.config import app_config as config
-from moduls.facedetection import cv2, detectFaces, faceBorders, addFaceBorders, getFaceImgInFirstBorder
-from moduls.chartcontrols import radarChartImage
-from moduls.mooddetection import classify_image, classify_face_in_first_border
+from moduls.facedetection import cv2, addFaceBorders
 from moduls.game.control import add_image
 from moduls.game.game import Game
 from moduls.handdetection import FindHands
+from moduls.mooddetection import classify_face_in_first_border
 
 # init video capture with appSize
 cap = cv2.VideoCapture(0)
@@ -34,7 +34,7 @@ while True:
     prediction = classify_face_in_first_border(face_borders, raw_img)
 
     # show prediction control
-    radar_control = radarChartImage(prediction)
+    radar_control = radar_chart_image(prediction)
     add_image(radar_control, overlay_radar)
 
     # Game
