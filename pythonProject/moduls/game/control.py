@@ -1,7 +1,7 @@
 import PIL.Image
 import cv2
 from PIL import Image, ImageDraw
-from pythonProject.moduls.config import app_config, german_moods
+from moduls.config import app_config, german_moods
 from numpy import asarray
 
 config = app_config.game_config.game_control_config

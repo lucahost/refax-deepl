@@ -1,4 +1,4 @@
-from pythonProject.moduls.config import app_config
+from moduls.config import app_config
 class_names = app_config.class_names
 
 

@@ -1,7 +1,7 @@
 from datetime import datetime
-from pythonProject.moduls.config import app_config
-from pythonProject.moduls.game.control import GameControl
-from pythonProject.moduls.game.score import Score
+from moduls.config import app_config
+from moduls.game.control import GameControl
+from moduls.game.score import Score
 
 config = app_config.game_config
 

@@ -3,7 +3,7 @@ from keras.preprocessing import image
 import cv2
 import numpy as np
 
-from pythonProject.moduls.facedetection import getFaceImgInFirstBorder
+from moduls.facedetection import getFaceImgInFirstBorder
 
 myModel = load_model('models/bigfoot-ubuntu.h5')
 img_height = 224

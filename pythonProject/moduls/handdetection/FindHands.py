@@ -1,5 +1,6 @@
 import math
 
+# pip install mediapipe-silicon for m1
 import mediapipe as mp
 import cv2
 

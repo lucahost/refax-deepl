@@ -2,9 +2,9 @@ from moduls.config import app_config as config
 from moduls.facedetection import cv2, detectFaces, faceBorders, addFaceBorders, getFaceImgInFirstBorder
 from moduls.chartcontrols import radarChartImage
 from moduls.mooddetection import classify_image, classify_face_in_first_border
-from pythonProject.moduls.game.control import add_image
-from pythonProject.moduls.game.game import Game
-from pythonProject.moduls.handdetection import FindHands
+from moduls.game.control import add_image
+from moduls.game.game import Game
+from moduls.handdetection import FindHands
 
 # init video capture with appSize
 cap = cv2.VideoCapture(0)
