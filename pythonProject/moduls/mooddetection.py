@@ -3,11 +3,18 @@ from keras.preprocessing import image
 import cv2
 import numpy as np
 
+from pythonProject.moduls.facedetection import getFaceImgInFirstBorder
 
 myModel = load_model('models/bigfoot-ubuntu.h5')
 img_height = 224
 img_width = 224
-def classifyImage(img):
+
+
+def classify_face_in_first_border(face_borders, img):
+    face_img = getFaceImgInFirstBorder(face_borders, img)
+    return classify_image(face_img)
+
+def classify_image(img):
     if img is None:
         return
     if img.size == 0:
@@ -19,4 +26,3 @@ def classifyImage(img):
 
     prediction = myModel.predict(x)
     return prediction[0]
-

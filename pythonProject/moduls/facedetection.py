@@ -15,9 +15,12 @@ def faceBorders(faces):
     return [FaceBorder(face) for face in faces]
 
 
-def addFaceBorders(faceborders, img):
-    for border in faceborders:
+def addFaceBorders(img):
+    faces = detectFaces(img)
+    face_borders = faceBorders(faces)
+    for border in face_borders:
         cv2.rectangle(img, border.start, border.end, border.color, border.thickness)
+    return face_borders
 
 
 def detectFaces(img):
