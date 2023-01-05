@@ -4,15 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="018971fe-c85a-46d0-8fad-b746515ede5f" name="Changes" comment="add python gitignore">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/camWithOverlay.py" beforeDir="false" afterPath="$PROJECT_DIR$/camWithOverlay.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/moduls/chartcontrols.py" beforeDir="false" afterPath="$PROJECT_DIR$/moduls/chartcontrols.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/moduls/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/moduls/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/moduls/game/control.py" beforeDir="false" afterPath="$PROJECT_DIR$/moduls/game/control.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/moduls/mooddetection.py" beforeDir="false" afterPath="$PROJECT_DIR$/moduls/mooddetection.py" afterDir="false" />
-    </list>
+    <list default="true" id="018971fe-c85a-46d0-8fad-b746515ede5f" name="Changes" comment="add python gitignore" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
