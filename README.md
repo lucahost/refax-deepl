@@ -1,92 +1,115 @@
-# DeepL_project
+# ReFaX - Real Time Facial Expression Detection
+
+Dieses Projekt wurde im Rahmen des DeepL (Deep Learning) Kurses an der FFHS entwickelt.
+
+Autoren:
+- Bischof, Marc
+- Hostettler, Luca
+- Pochmann, Matthias
 
 
+## Projektorganisation
 
-## Getting started
+Die Projektorganisation erfolgte mit GitLab.
+Wir haben pro Task ein Issue erstellt und diesen einem Milestone zugeordnet.
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+Die Issues wurden in 3 Kategorien unterteilt:
+- Planung (8 Issues)
+- Umsetzung (7 Issues)
+- Abschluss (2 Issues)
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+Link zum GitLab Board: [GitLab Board](https://git.ffhs.ch/matthias.pochmann/deepl_project/-/boards)
 
-## Add your files
+![Milestones](./pythonProject/notebooks/diagrams/project-management.png)
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
+### Ordnerstruktur
+
+Die Ordnerstruktur ist wie folgt aufgebaut:
+```
+./pythonProject
+    ./notebooks
+        ./10_Data_Preparation.ipynb
+        ./20_Train_Model.ipynb
+        ./30_Test_Model.ipynb
+        ./99_Model_Architecture.ipynb
+        ./diagrams
+    ./models
+        ./myModel.h5
+    ./moduls
+        ./game
+        ./handdetection
+    ./app.py
 
 ```
-cd existing_repo
-git remote add origin https://git.ffhs.ch/matthias.pochmann/deepl_project.git
-git branch -M main
-git push -uf origin main
-```
 
-## Integrate with your tools
+## Einleitung
 
-- [ ] [Set up project integrations](https://git.ffhs.ch/matthias.pochmann/deepl_project/-/settings/integrations)
+Das Projekt ReFaX (Real Time Facial Expression Detection) ist ein Programm, welches in Echtzeit die Gesichtsausdrücke von Personen erkennt. 
+Die Erkennung erfolgt mittels eines neuronalen Netzes, welches selbst erstellt und trainiert wurde. 
 
-## Collaborate with your team
+Das Programm ist in Python geschrieben und nutzt die Bibliothek OpenCV zur Bildverarbeitung.
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Automatically merge when pipeline succeeds](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
+## Daten
 
-## Test and Deploy
+Die Daten für das Training basieren auf [AffectNet Arxiv Link](https://https://arxiv.org/abs/1708.03985)
 
-Use the built-in continuous integration in GitLab.
+Es beinhaltet 8 Klassen (Neutral, Happiness, Sadness, Surprise, Fear, Disgust, Anger, Contempt) und 287'651 Training und 4'000 Test Bilder.
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing(SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+Die Daten innerhalb der Klassen sind ungleichmässig verteilt. 'Happy' und 'Neutral' sind am häufigsten vertreten, 'Contempt' am seltensten.
 
-***
+Ein Beispiel für jedes Label:
+![Example Classification](./pythonProject/notebooks/diagrams/example_class.png)
 
-# Editing this README
+## Architektur
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thank you to [makeareadme.com](https://www.makeareadme.com/) for this template.
+Die Architektur unseres Modells ist ein Convolutional Neural Network (CNN).
 
-## Suggestions for a good README
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+Es besteht aus 1 Rescaling Layer, 4 Convolutional Layers je 1 Max Pooling Layers und am Schluss Dropout, Flatten + 2 Dense.
 
-## Name
-Choose a self-explaining name for your project.
+![Convolutional Neural Network Architektur](./pythonProject/notebooks/diagrams/model.png)
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+### Konfiguration
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+Als Aktivierungsfunktion wurde `reLu` verwendet. Die Optimierung erfolgte mit `Adam` und die Loss-Funktion mit `Sparse Categorical Crossentropy`.
 
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+### Data Augmentation
 
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+Mit `keras.Sequential` haben wir einen weiteren Layer erstellt, für die Data Augmentation. 
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+Die Schritte in diesem Layer sind:
+- RandomFlip (Horizontal)
+- RandomRotation
+- Zoom
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+### Training
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+Das Training fand 20 Epochen lang statt. Die Batch-Size betrug 32.
 
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
+## Resultate
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
+Als höchste Accuracy mit der Data Augmentation haben wir als maximale Accuracy von 8 Klassen 0.43 erreicht.
 
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
+Dieses Resultat ist im Vergleich zu den State of The Art Resultaten gar nicht sehr schlecht.
+Die State of the Art Resultate bei 8 Klassen hat `Multi-Task EffiecientNet-B2` mit 0.63 erreicht.
 
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
+## Explainablity
 
-## License
-For open source projects, say how it is licensed.
+Um die Erkennung der einzelnen Klassen zu verstehen und darzustellen haben wir ein Spider-Chart erstellt.
 
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+Dieses Spider-Chart zeigt die Wahrscheinlichkeit der einzelnen Klassen in einem Kreis.
+
+![Spider-Chart](./pythonProject/notebooks/diagrams/spider-chart.png)
+
+## Spiel
+
+Das Spiel wurde ebenfalls mit Python entwickelt. Es verwendet zusätzlich die Library `MediaPipe` für das Erkennen und Tracken von Handgestiken verwendet.
+
+Per Handgestik lässt sich das Spiel starten, wenn der Zeigefinger auf die Start-Taste zeigt.
+
+## Demo
+
+Hier ein Video zur Demo von ReFax
+
+<figure class="video_container">
+    <iframe src="https://ffhs-my.sharepoint.com/personal/luca_hostettler_students_ffhs_ch/_layouts/15/embed.aspx?UniqueId=82871858-d776-4f97-b2be-26a4c45fc583&embed=%7B%22ust%22%3Afalse%2C%22hv%22%3A%22CopyEmbedCode%22%7D&referrer=OneUpFileViewer&referrerScenario=EmbedDialog.Create" width="640" height="360" frameborder="0" scrolling="no" allowfullscreen title="DeepL - ReFaX Demo-20230108_145642-Meeting Recording.mp4"></iframe>
+</figure>
