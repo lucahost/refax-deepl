@@ -111,5 +111,5 @@ Per Handgestik lässt sich das Spiel starten, wenn der Zeigefinger auf die Start
 Hier ein Video zur Demo von ReFax
 
 <figure class="video_container">
-    <iframe src="https://ffhs-my.sharepoint.com/personal/luca_hostettler_students_ffhs_ch/_layouts/15/embed.aspx?UniqueId=82871858-d776-4f97-b2be-26a4c45fc583&embed=%7B%22ust%22%3Afalse%2C%22hv%22%3A%22CopyEmbedCode%22%7D&referrer=OneUpFileViewer&referrerScenario=EmbedDialog.Create" width="640" height="360" frameborder="0" scrolling="no" allowfullscreen title="DeepL - ReFaX Demo-20230108_145642-Meeting Recording.mp4"></iframe>
+<iframe src="https://ffhs-my.sharepoint.com/personal/luca_hostettler_students_ffhs_ch/_layouts/15/embed.aspx?UniqueId=82871858-d776-4f97-b2be-26a4c45fc583&embed=%7B%22ust%22%3Atrue%2C%22hv%22%3A%22CopyEmbedCode%22%7D&referrer=OneUpFileViewer&referrerScenario=EmbedDialog.Create" width="640" height="360" frameborder="0" scrolling="no" allowfullscreen title="DeepL - ReFaX Demo-20230108_145642-Meeting Recording.mp4"></iframe>
 </figure>
